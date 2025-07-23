@@ -186,7 +186,10 @@ void AsyncMqttClient::_clear() {
 /* TCP */
 void AsyncMqttClient::_onConnect() {
   log_i("TCP conn, MQTT CONNECT");
-#if ASYNC_TCP_SSL_ENABLED
+
+  // ignore ssl verification
+  #if 0
+  // #if ASYNC_TCP_SSL_ENABLED
   if (_secure && _secureServerFingerprints.size() > 0) {
     SSL* clientSsl = _client.getSSL();
 
